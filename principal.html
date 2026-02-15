@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Inicio</title>
+<link rel="stylesheet" href="estilos.css">
+
+<style>
+.usuario-box{
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    background: rgba(0,0,0,0.7);
+    color: gold;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    box-shadow: 0 0 10px gold;
+    z-index: 5;
+}
+
+/* ===== REPRODUCTOR ===== */
+
+.reproductor{
+    width: 80%;
+    margin: 40px auto;
+    text-align: center;
+    background: rgba(0,0,0,0.7);
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 0 25px gold;
+}
+
+.reproductor h2{
+    color: gold;
+}
+
+.reproductor input{
+    width: 60%;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+}
+
+.lista-videos{
+    margin-top: 15px;
+    max-height: 200px;
+    overflow-y: auto;
+    text-align: left;
+}
+
+.lista-videos div{
+    padding: 8px;
+    background: rgba(255,255,255,0.05);
+    margin-bottom: 5px;
+    cursor: pointer;
+    color: white;
+    border-radius: 6px;
+}
+
+.lista-videos div:hover{
+    background: gold;
+    color: black;
+}
+
+.reproductor video{
+    width: 100%;
+    height: 400px;
+    border-radius: 15px;
+    margin-top: 20px;
+}
+</style>
+</head>
+
+<body class="fondo">
+
+<nav>
+<a href="principal.html">INICIO</a>
+<a href="nosotros.html">NOSOTROS</a>
+<a href="servicios.html">SERVICIOS</a>
+<a href="chat.html">CHAT</a>
+<a href="descargas.html">DESCARGAS</a>
+<a href="contactanos.html">CONTACTANOS</a>
+</nav>
+
+<div id="usuarioLogueado" class="usuario-box"></div>
+
+<section class="contenido">
+<h1>BIENVENIDO GUERRERO</h1>
+<p>"La disciplina es poder"</p>
+</section>
+
+<div class="reproductor">
+    <h2>⚔ Biblioteca de Videos</h2>
+
+    <input type="text" id="busqueda"
+    placeholder="Buscar video...">
+
+    <div id="listaVideos" class="lista-videos"></div>
+
+    <video id="videoPlayer" controls>
+        <source id="videoSource" src="" type="video/mp4">
+        Tu navegador no soporta video.
+    </video>
+</div>
+
+<script>
+
+/* ===== USUARIO ===== */
+
+let usuario = localStorage.getItem("usuario");
+
+if(usuario){
+    document.getElementById("usuarioLogueado").innerHTML =
+        "⚔ Usuario: " + usuario;
+}else{
+    window.location.href = "login.html";
+}
+
+/* ===== LISTA DE VIDEOS (AGREGA LOS TUYOS AQUÍ) ===== */
+
+let listaVideos = [
+    "rumor.mp4",
+    "mecanico.mp4",
+    "resiste y sobrevive.mp4",
+    "invencible.mp4",
+    "rendirse jamas.mp4"
+];
+
+/* ===== MOSTRAR LISTA ===== */
+
+function mostrarLista(filtro=""){
+
+    let contenedor = document.getElementById("listaVideos");
+    contenedor.innerHTML = "";
+
+    let filtrados = listaVideos.filter(video =>
+        video.toLowerCase().includes(filtro.toLowerCase())
+    );
+
+    filtrados.forEach(video => {
+        let item = document.createElement("div");
+        item.textContent = video.replace(".mp4","");
+        item.onclick = function(){
+            reproducirVideo(video);
+        };
+        contenedor.appendChild(item);
+    });
+}
+
+/* ===== REPRODUCIR ===== */
+
+function reproducirVideo(video){
+    document.getElementById("videoSource").src = "videos/" + video;
+    document.getElementById("videoPlayer").load();
+}
+
+/* ===== BUSCADOR DINÁMICO ===== */
+
+document.getElementById("busqueda").addEventListener("input", function(){
+    mostrarLista(this.value);
+});
+
+/* ===== CARGAR LISTA INICIAL ===== */
+
+mostrarLista();
+
+/* ===== ENERGÍA ===== */
+
+function generarEnergia(){
+    for(let i=0; i<30; i++){
+        let energia = document.createElement("div");
+        energia.classList.add("energy");
+        energia.style.left = Math.random() * 100 + "vw";
+        energia.style.animationDuration = (3 + Math.random()*4) + "s";
+        energia.style.animationDelay = Math.random() * 3 + "s";
+        document.body.appendChild(energia);
+    }
+}
+generarEnergia();
+
+</script>
+
+<a href="https://wa.me/51985949491?text=Hola%20deseo%20información"
+target="_blank" class="whatsapp-float">
+<img src="img/whatsapp.png" width="60">
+</a>
+
+<style>
+.whatsapp-float{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+}
+.whatsapp-float img{
+    border-radius: 50%;
+    box-shadow: 0 0 15px green;
+}
+</style>
+
+</body>
+</html>

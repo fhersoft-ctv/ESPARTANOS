@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Integrantes</title>
+<link rel="stylesheet" href="estilos.css">
+
+<style>
+
+/* ===== TARJETAS VERTICALES ===== */
+
+.cards{
+    width: 90%;
+    margin: auto;
+    margin-top: 40px;
+}
+
+.card{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0,0,0,0.6);
+    border: 2px solid gold;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 25px;
+    backdrop-filter: blur(8px);
+}
+
+/* Información izquierda */
+.card-info{
+    color: white;
+}
+
+.card-info img{
+    width: 80px;
+    margin-bottom: 10px;
+}
+
+/* Imagen derecha */
+.card-img{
+    width: 150px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 3px solid gold;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.card-img:hover{
+    transform: scale(1.08);
+    box-shadow: 0 0 20px red, 0 0 40px gold;
+}
+
+</style>
+
+</head>
+
+<body class="fondo">
+
+<nav>
+<a href="index.html">INICIO</a>
+<a href="integrantes.html">INTEGRANTES</a>
+<a href="chat.html">CHAT INTERNO</a>
+<a href="descargas.html">DESCARGAS</a>
+<a href="mailto:admin@espartanos.com">CORREO</a>
+</nav>
+
+<!-- AUDIO (MISMO DEL INDEX) -->
+<audio id="sonidoHover" src="audio.mp3"></audio>
+
+<div class="cards">
+
+<!-- INTEGRANTE 1 -->
+<div class="card">
+    <div class="card-info">
+        <img src="img/escudo.png">
+        <h3>Leonidas Alvarez</h3>
+        <p><strong>Profesión:</strong> Ingeniero</p>
+        <p><strong>Apodo:</strong> El León</p>
+        <p>"Volveré con mi escudo o sobre él"</p>
+    </div>
+    <img src="img/leonidas.jpg" class="card-img" onmouseenter="reproducirSonido()">
+</div>
+
+<!-- INTEGRANTE 2 -->
+<div class="card">
+    <div class="card-info">
+        <img src="img/escudo.png">
+        <h3>Lucas Alvarez</h3>
+        <p><strong>Profesión:</strong> Ingeniero</p>
+        <p><strong>Apodo:</strong> El León</p>
+        <p>"Volveré con mi escudo o sobre él"</p>
+    </div>
+    <img src="img/lucas.jpg" class="card-img" onmouseenter="reproducirSonido()">
+</div>
+
+<!-- INTEGRANTE 3 -->
+<div class="card">
+    <div class="card-info">
+        <img src="img/escudo.png">
+        <h3>Daniel Muñoz</h3>
+        <p><strong>Profesión:</strong> Ingeniero</p>
+        <p><strong>Apodo:</strong> El León</p>
+        <p>"Volveré con mi escudo o sobre él"</p>
+    </div>
+    <img src="img/daniel.jpg" class="card-img" onmouseenter="reproducirSonido()">
+</div>
+
+<!-- INTEGRANTE 4 -->
+<div class="card">
+    <div class="card-info">
+        <img src="img/escudo.png">
+        <h3>German Camayo</h3>
+        <p><strong>Profesión:</strong> Ingeniero</p>
+        <p><strong>Apodo:</strong> El León</p>
+        <p>"Volveré con mi escudo o sobre él"</p>
+    </div>
+    <img src="img/german.jpg" class="card-img" onmouseenter="reproducirSonido()">
+</div>
+
+<!-- INTEGRANTE 5 -->
+<div class="card">
+    <div class="card-info">
+        <img src="img/escudo.png">
+        <h3>Juan Yupanqui</h3>
+        <p><strong>Profesión:</strong> Ingeniero</p>
+        <p><strong>Apodo:</strong> El León</p>
+        <p>"Volveré con mi escudo o sobre él"</p>
+    </div>
+    <img src="img/juan.jpg" class="card-img" onmouseenter="reproducirSonido()">
+</div>
+
+<!-- INTEGRANTE 6 -->
+<div class="card">
+    <div class="card-info">
+        <img src="img/escudo.png">
+        <h3>Artemis Vega</h3>
+        <p><strong>Profesión:</strong> Arquitecta</p>
+        <p><strong>Apodo:</strong> La Furia</p>
+        <p>"La disciplina es poder"</p>
+    </div>
+    <img src="img/artemis.jpg" class="card-img" onmouseenter="reproducirSonido()">
+</div>
+
+</div>
+
+<script>
+
+/* ===== SONIDO HOVER ===== */
+function reproducirSonido(){
+    let audio = document.getElementById("sonidoHover");
+    audio.currentTime = 0;
+    audio.play();
+}
+
+/* ===== GENERADOR DE ENERGÍA ===== */
+function generarEnergia(){
+    for(let i=0; i<30; i++){
+        let energia = document.createElement("div");
+        energia.classList.add("energy");
+        energia.style.left = Math.random() * 100 + "vw";
+        energia.style.animationDuration = (3 + Math.random()*4) + "s";
+        energia.style.animationDelay = Math.random() * 3 + "s";
+        document.body.appendChild(energia);
+    }
+}
+generarEnergia();
+
+</script>
+
+</body>
+</html>

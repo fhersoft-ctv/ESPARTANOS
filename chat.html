@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Chat</title>
+<link rel="stylesheet" href="estilos.css">
+
+<style>
+
+/* ===== CONTENEDOR GENERAL ===== */
+.chat-container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-top:40px;
+}
+
+/* ===== IMÁGENES LATERALES ===== */
+.chat-img{
+    width:200px;
+    height:auto;
+}
+
+.izquierda{
+    margin-right:20px;
+}
+
+.derecha{
+    margin-left:20px;
+    transform: scaleX(-1);
+}
+
+/* ===== CAJA CHAT ===== */
+.chat-box{
+    width:500px;
+    height:500px;
+    background: rgba(0,0,0,0.8);
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 0 20px gold;
+    display:flex;
+    flex-direction:column;
+}
+
+#chat{
+    flex:1;
+    overflow-y:auto;
+    margin-bottom:10px;
+    color:white;
+}
+
+#mensaje{
+    padding:10px;
+    border-radius:10px;
+    border:none;
+    margin-bottom:10px;
+}
+
+#btnEnviar{
+    padding:10px;
+    border:none;
+    border-radius:10px;
+    background:gold;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.whatsapp-float{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+}
+.whatsapp-float img{
+    border-radius: 50%;
+    box-shadow: 0 0 15px green;
+}
+
+</style>
+</head>
+
+<body class="fondo">
+
+<nav>
+<a href="principal.html">INICIO</a>
+<a href="nosotros.html">NOSOTROS</a>
+<a href="servicios.html">SERVICIOS</a>
+<a href="chat.html">CHAT</a>
+<a href="descargas.html">DESCARGAS</a>
+<a href="contactanos.html">CONTACTANOS</a>
+</nav>
+
+<div class="chat-container">
+
+    <!-- IMAGEN IZQUIERDA -->
+    <img src="img/izquierda.png" class="chat-img izquierda">
+
+    <!-- CHAT -->
+    <div class="chat-box">
+        <div id="chat"></div>
+        <input type="text" id="mensaje" placeholder="Escribe mensaje y presiona ENTER">
+        <button id="btnEnviar">Enviar</button>
+    </div>
+
+    <!-- IMAGEN DERECHA -->
+    <img src="img/derecha.png" class="chat-img derecha">
+
+</div>
+
+<!-- FIREBASE CHAT EN TIEMPO REAL -->
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp } 
+from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+/* ===== CONFIGURA TU FIREBASE AQUÍ ===== */
+const firebaseConfig = {
+  apiKey: "AQUI_API_KEY",
+  authDomain: "AQUI_AUTH_DOMAIN",
+  projectId: "AQUI_PROJECT_ID",
+  storageBucket: "AQUI_BUCKET",
+  messagingSenderId: "AQUI_SENDER_ID",
+  appId: "AQUI_APP_ID"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+/* ===== USUARIO DEL LOGIN ===== */
+let usuario = localStorage.getItem("usuario");
+
+if(!usuario){
+    alert("Debes iniciar sesión primero");
+    window.location.href="login.html";
+}
+
+/* ===== ENTER ENVÍA ===== */
+document.getElementById("mensaje").addEventListener("keydown", function(e){
+    if(e.key === "Enter"){
+        enviar();
+    }
+});
+
+document.getElementById("btnEnviar").addEventListener("click", enviar);
+
+/* ===== ENVIAR MENSAJE ===== */
+async function enviar(){
+    let mensajeInput = document.getElementById("mensaje");
+    let texto = mensajeInput.value.trim();
+
+    if(texto !== ""){
+        await addDoc(collection(db, "chat"), {
+            usuario: usuario,
+            mensaje: texto,
+            fecha: serverTimestamp()
+        });
+        mensajeInput.value="";
+    }
+}
+
+/* ===== ESCUCHAR MENSAJES EN TIEMPO REAL ===== */
+const q = query(collection(db, "chat"), orderBy("fecha","asc"));
+
+onSnapshot(q, (snapshot) => {
+    let chatDiv = document.getElementById("chat");
+    chatDiv.innerHTML="";
+
+    snapshot.forEach((doc) => {
+        let data = doc.data();
+        if(data.mensaje){
+            chatDiv.innerHTML += 
+            "<p><b>"+data.usuario+":</b> "+data.mensaje+"</p>";
+        }
+    });
+
+    chatDiv.scrollTop = chatDiv.scrollHeight;
+});
+
+</script>
+
+<!-- ENERGÍA -->
+<script>
+function generarEnergia(){
+    for(let i=0; i<30; i++){
+        let energia = document.createElement("div");
+        energia.classList.add("energy");
+        energia.style.left = Math.random() * 100 + "vw";
+        energia.style.animationDuration = (3 + Math.random()*4) + "s";
+        energia.style.animationDelay = Math.random() * 3 + "s";
+        document.body.appendChild(energia);
+    }
+}
+generarEnergia();
+</script>
+
+<a href="https://wa.me/51985949491?text=Hola%20deseo%20información"
+target="_blank" class="whatsapp-float">
+<img src="img/whatsapp.png" width="60">
+</a>
+
+</body>
+</html>

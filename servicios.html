@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Servicios</title>
+<link rel="stylesheet" href="estilos.css">
+
+<style>
+.servicio{
+    display: flex;
+    flex-direction: column;
+    margin: 40px auto;
+    width: 85%;
+    background: rgba(0,0,0,0.7);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px gold;
+    transition: 0.3s ease;
+}
+
+.servicio:hover{
+    box-shadow: 0 0 35px gold;
+    transform: scale(1.01);
+}
+
+.servicio-contenido{
+    display:flex;
+    align-items:center;
+}
+
+.servicio img{
+    width: 200px;
+    height: auto;
+    margin-right: 30px;
+    border-radius: 10px;
+}
+
+.servicio h2{
+    color: gold;
+    margin-bottom:10px;
+}
+
+.descripcion-servicio{
+    margin-top:15px;
+    padding:15px;
+    background: rgba(255,255,255,0.05);
+    border-left: 4px solid gold;
+    color:white;
+    font-size:15px;
+}
+
+/* ===== CABECERA CON MISMO EFECTO ===== */
+.titulo-servicios{
+    width:85%;
+    margin:40px auto;
+    background: rgba(0,0,0,0.7);
+    padding:20px;
+    border-radius:15px;
+    box-shadow: 0 0 20px gold;
+    transition:0.3s ease;
+    text-align:center;
+}
+
+.titulo-servicios:hover{
+    box-shadow: 0 0 35px gold;
+    transform: scale(1.01);
+}
+
+.titulo-servicios img{
+    width:100%;
+    max-width:1400px;
+    border-radius:10px;
+}
+
+/* BOTON WHATSAPP */
+.whatsapp-float{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+}
+.whatsapp-float img{
+    border-radius: 50%;
+    box-shadow: 0 0 15px green;
+}
+</style>
+
+</head>
+
+<body class="fondo">
+
+<nav>
+<a href="principal.html">INICIO</a>
+<a href="nosotros.html">NOSOTROS</a>
+<a href="servicios.html">SERVICIOS</a>
+<a href="chat.html">CHAT</a>
+<a href="descargas.html">DESCARGAS</a>
+<a href="contactanos.html">CONTACTANOS</a>
+</nav>
+
+<div class="titulo-servicios">
+<img src="servicios/cabecera.png">
+</div>
+
+<!-- CONTABLE -->
+<div class="servicio">
+    <div class="servicio-contenido">
+        <img src="servicios/contable.png">
+        <div>
+            <h2>CONTABLE, TRIBUTARIO Y LABORAL</h2>
+        </div>
+    </div>
+    <div class="descripcion-servicio">
+        INGRESE SERVICIO ESPECÍFICO AQUÍ...
+    </div>
+</div>
+
+<!-- AUDITORIA -->
+<div class="servicio">
+    <div class="servicio-contenido">
+        <img src="servicios/auditoria.png">
+        <div>
+            <h2>AUDITORÍA</h2>
+        </div>
+    </div>
+    <div class="descripcion-servicio">
+        INGRESE SERVICIO ESPECÍFICO AQUÍ...
+    </div>
+</div>
+
+<!-- LEGAL -->
+<div class="servicio">
+    <div class="servicio-contenido">
+        <img src="servicios/legal.png">
+        <div>
+            <h2>LEGAL</h2>
+        </div>
+    </div>
+    <div class="descripcion-servicio">
+        INGRESE SERVICIO ESPECÍFICO AQUÍ...
+    </div>
+</div>
+
+<!-- ADMINISTRACION -->
+<div class="servicio">
+    <div class="servicio-contenido">
+        <img src="servicios/administracion.png">
+        <div>
+            <h2>ADMINISTRACIÓN Y FINANZAS</h2>
+        </div>
+    </div>
+    <div class="descripcion-servicio">
+        INGRESE SERVICIO ESPECÍFICO AQUÍ...
+    </div>
+</div>
+
+<a href="https://wa.me/51985949491?text=Hola%20deseo%20información"
+target="_blank" class="whatsapp-float">
+<img src="img/whatsapp.png" width="60">
+</a>
+
+</body>
+</html>

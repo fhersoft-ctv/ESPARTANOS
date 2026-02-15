@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Descargas</title>
+
+<style>
+
+body{
+    margin:0;
+    padding:0;
+    font-family:'Trebuchet MS', sans-serif;
+    background:black;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* ===== FONDO ===== */
+body::before{
+    content:"";
+    position:fixed;
+    width:100%;
+    height:100%;
+    background: radial-gradient(circle at center, #111 0%, #000 80%);
+    z-index:-2;
+}
+
+/* ===== NAV ===== */
+nav{
+    text-align:center;
+    padding:20px;
+    background:rgba(0,0,0,0.85);
+    box-shadow:0 0 20px gold;
+}
+
+nav a{
+    color:gold;
+    margin:0 15px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+nav a:hover{
+    color:orange;
+}
+
+/* ===== TABLA ===== */
+.table-container{
+    display:flex;
+    justify-content:center;
+    margin-top:50px;
+}
+
+table{
+    width:85%;
+    border-collapse:collapse;
+    background:rgba(0,0,0,0.9);
+    box-shadow:0 0 25px gold;
+    border-radius:15px;
+    overflow:hidden;
+}
+
+th, td{
+    padding:15px;
+    text-align:center;
+}
+
+th{
+    background:gold;
+    color:black;
+    font-size:16px;
+}
+
+tr:nth-child(even){
+    background:rgba(255,255,255,0.05);
+}
+
+tr:hover{
+    background:rgba(255,215,0,0.2);
+}
+
+/* BOTÓN */
+.descarga-btn{
+    color:gold;
+    text-decoration:none;
+    font-weight:bold;
+    border:1px solid gold;
+    padding:6px 14px;
+    border-radius:6px;
+    transition:0.3s;
+}
+
+.descarga-btn:hover{
+    background:gold;
+    color:black;
+}
+
+/* ===== LLUVIA DE RAYOS ===== */
+.rain-container{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+    z-index:-1;
+}
+
+.lightning{
+    position:absolute;
+    top:-100px;
+    width:2px;
+    background:linear-gradient(to bottom, #00ccff, white);
+    box-shadow:0 0 15px #00ccff, 0 0 25px white;
+    animation:fall linear infinite;
+    opacity:0.7;
+}
+
+@keyframes fall{
+    0%{transform:translateY(0);}
+    100%{transform:translateY(110vh);}
+}
+
+/* ===== ENERGÍA DESDE ABAJO ===== */
+.energy{
+    position:fixed;
+    bottom:0;
+    width:6px;
+    height:6px;
+    background: radial-gradient(circle, gold, orange, red);
+    border-radius:50%;
+    animation:rise linear infinite;
+    pointer-events:none;
+    z-index:0;
+}
+
+@keyframes rise{
+    0%{transform:translateY(0); opacity:1;}
+    100%{transform:translateY(-110vh); opacity:0;}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="rain-container" id="rain"></div>
+
+<nav>
+<a href="principal.html">INICIO</a>
+<a href="nosotros.html">NOSOTROS</a>
+<a href="servicios.html">SERVICIOS</a>
+<a href="chat.html">CHAT</a>
+<a href="descargas.html">DESCARGAS</a>
+<a href="contactanos.html">CONTACTANOS</a>
+</nav>
+
+<div class="table-container">
+<table>
+
+<tr>
+<th>Archivo</th>
+<th>Colaborador</th>
+<th>Acción</th>
+</tr>
+
+<tr>
+<td>Ley General de Contrataciones Publicas</td>
+<td>Luis Alvarez</td>
+<td><a class="descarga-btn" href="descargas/Ley General de Contrataciones Publicas.pdf" download>Descargar</a></td>
+</tr>
+
+<tr>
+<td>Ley de Contrataciones del Estado</td>
+<td>Luis Alvarez</td>
+<td><a class="descarga-btn" href="descargas/Ley de Contrataciones del Estado.pdf" download>Descargar</a></td>
+</tr>
+
+<tr>
+<td>G.010 CONSIDERACIONES BASICAS</td>
+<td>Luis Alvarez</td>
+<td><a class="descarga-btn" href="descargas/01 G.010 CONSIDERACIONES BASICAS.pdf" download>Descargar</a></td>
+</tr>
+
+<tr>
+<td>G.020 PRINCIPIOS GENERALES</td>
+<td>Luis Alvarez</td>
+<td><a class="descarga-btn" href="descargas/02 G.020 PRINCIPIOS GENERALES.pdf" download>Descargar</a></td>
+</tr>
+
+
+<tr>
+<td>NORMA G.030 DERECHOS Y RESPONSABILIDADES - RM N°341-2018-VIVIENDA</td>
+<td>Luis Alvarez</td>
+<td><a class="descarga-btn" href="descargas/03 NORMA G.030 DERECHOS Y RESPONSABILIDADES - RM N°341-2018-VIVIENDA.pdf" download>Descargar</a></td>
+</tr>
+
+<tr>
+<td>G.040 DEFINICIONES_RM N° 029-2021-VIVIENDA</td>
+<td>Luis Alvarez</td>
+<td><a class="descarga-btn" href="descargas/04 G.040 DEFINICIONES_RM N° 029-2021-VIVIENDA.pdf" download>Descargar</a></td>
+</tr>
+
+<tr>
+<td>G.050 SEGURIDAD DURANTE LA CONSTRUCCIÓN DS N° 010-2009</td>
+<td>Luis Alvarez</td>
+<td><a class="descarga-btn" href="descargas/05 G.050 SEGURIDAD DURANTE LA CONSTRUCCIÓN DS N° 010-2009.pdf" download>Descargar</a></td>
+</tr>
+
+
+<tr>
+<td>Informe_Tecnico.docx</td>
+<td>Daniel Muñoz</td>
+<td><a class="descarga-btn" href="descargas/Informe_Tecnico.docx" download>Descargar</a></td>
+</tr>
+
+<tr>
+<td>Presupuesto_2026.xlsx</td>
+<td>Artemis Vega</td>
+<td><a class="descarga-btn" href="descargas/Presupuesto_2026.xlsx" download>Descargar</a></td>
+</tr>
+
+<tr>
+<td>Manual_Estrategia.pdf</td>
+<td>Leonidas Alvarez</td>
+<td><a class="descarga-btn" href="descargas/Manual_Estrategia.pdf" download>Descargar</a></td>
+</tr>
+
+</table>
+</div>
+
+<script>
+
+/* LLUVIA */
+for(let i=0;i<100;i++){
+    let rayo=document.createElement("div");
+    rayo.classList.add("lightning");
+    rayo.style.left=Math.random()*100+"vw";
+    rayo.style.height=(80+Math.random()*120)+"px";
+    rayo.style.animationDuration=(0.5+Math.random()*1.2)+"s";
+    rayo.style.animationDelay=Math.random()*2+"s";
+    document.getElementById("rain").appendChild(rayo);
+}
+
+/* ENERGÍA */
+for(let i=0;i<30;i++){
+    let energia=document.createElement("div");
+    energia.classList.add("energy");
+    energia.style.left=Math.random()*100+"vw";
+    energia.style.animationDuration=(3+Math.random()*4)+"s";
+    energia.style.animationDelay=Math.random()*3+"s";
+    document.body.appendChild(energia);
+}
+
+</script>
+
+
+<a href="https://wa.me/51985949491?text=Hola%20deseo%20información"
+target="_blank" class="whatsapp-float">
+<img src="img/whatsapp.png" width="60">
+</a>
+
+<style>
+.whatsapp-float{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+}
+.whatsapp-float img{
+    border-radius: 50%;
+    box-shadow: 0 0 15px green;
+}
+</style>
+
+
+</body>
+</html>
